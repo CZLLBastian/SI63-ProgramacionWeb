@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+
+		<h2>Lista de Arrendadores</h2>
+		<h:form>
+			<p:dataTable id="lstArrendador"
+				value="#{arrendadorController.listaarrendador}" var="ar"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="7" rowIndexVar="item"
+				emptyMessage="No existen arrendadores registrados">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{ar.idArrendador}" />
+				</p:column>
+
+				<p:column headerText="Nombre del Arrendador">
+					<h:outputText value="#{ar.nomArrendador}" />
+				</p:column>
+
+				<p:column headerText="Dni del Arrendador">
+					<h:outputText value="#{ar.dniArrendador}" />
+				</p:column>
+
+				<p:column headerText="Edad">
+					<h:outputText value="#{ar.edadArrendador}" />
+				</p:column>
+
+				<p:column headerText="Celular">
+					<h:outputText value="#{ar.celArrendador}" />
+				</p:column>
+
+				<p:column headerText="Email">
+					<h:outputText value="#{ar.emailArrendador}" />
+				</p:column>
+
+				<p:column headerText="Username">
+					<h:outputText value="#{ar.username}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
