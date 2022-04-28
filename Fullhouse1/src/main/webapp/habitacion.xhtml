@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Registro de Habitacion</h2>
+		<h:form>
+
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{roomController.r.idRoom}" required="true" />
+
+
+			<h:outputLabel value="Nombre:" for="nombre"
+				styleClass="control-label" />
+			<p:inputText id="nombre" styleClass="form-control"
+				value="#{roomController.r.descpRoom}" required="true" />
+
+
+			<h:outputLabel value="Dirección: " for="direccion"
+				styleClass="control-label" />
+			<p:inputText id="direccion" styleClass="form-control"
+				value="#{roomController.r.adress}" required="true" />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{roomController.insert()}"
+				action="listRoom?faces-redirect=true" update="@form" />
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+
+</html>
