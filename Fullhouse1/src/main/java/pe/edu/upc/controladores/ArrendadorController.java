@@ -53,6 +53,42 @@ public class ArrendadorController {
 
 	}
 
+	// delete
+
+	public void delete(Arrendador are) {
+		try {
+			Aservice.delete(are.getIdArrendador());
+			this.list();
+		} catch (Exception e) {
+			System.out.println("Error al eliminar en el controlador");
+		}
+	}
+	// modificar
+
+	public String preUpdate(Arrendador ar) {
+		this.setAr(ar);
+		return "modificar.xhtml";
+	}
+	
+	public void Update() {
+		try {
+			Aservice.update(this.ar);
+		} catch (Exception e) {
+			System.out.println("Error al modificar en el controlador");
+		}
+		
+	}
+	
+	//buscar
+	 public void findByNameArrend() {
+		 try {
+			listaarrendador= Aservice.findByNameArrend(this.getAr());
+		} catch (Exception e) {
+			System.out.println("Error al buscar en el controlador");
+		}
+	 }
+	
+
 	// getters and setters
 	public Arrendador getAr() {
 		return ar;
