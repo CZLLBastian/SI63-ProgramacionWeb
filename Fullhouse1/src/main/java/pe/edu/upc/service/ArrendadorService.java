@@ -9,5 +9,11 @@ public interface ArrendadorService {
 	public void insert(Arrendador ar);
 
 	public List<Arrendador> list();
+	
+	public void delete(int id);
+	
+	public void update(Arrendador ar);
+	
+	public List<Arrendador> findByNameArrend(Arrendador ar);
 
 }
