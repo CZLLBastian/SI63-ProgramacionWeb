@@ -24,4 +24,26 @@ public class ArrendadorServiceimpls implements ArrendadorService {
 		return ArInt.list();
 	}
 
+	
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		ArInt.delete(id);
+	}
+
+	@Override
+	public void update(Arrendador ar) {
+		// TODO Auto-generated method stub
+		ArInt.update(ar);
+		
+	}
+
+	@Override
+	public List<Arrendador> findByNameArrend(Arrendador ar) {
+		// TODO Auto-generated method stub
+		return ArInt.findByNameArrend(ar);
+	}
+	
+	
+
 }
