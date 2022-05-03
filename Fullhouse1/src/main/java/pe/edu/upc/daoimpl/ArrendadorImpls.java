@@ -39,4 +39,41 @@ public class ArrendadorImpls implements ArrendadorInterfaces {
 		return listararrendador;
 	}
 
+	@Transactional
+	@Override
+	public void delete(int id) {
+		try {
+			Arrendador are = em.find(Arrendador.class, id);
+			em.remove(are);
+		} catch (Exception e) {
+			System.out.println("Error al eliminar al arrendador en el implements");
+		}
+
+	}
+
+	@Transactional
+	@Override
+	public void update(Arrendador ar) {
+		try {
+			em.merge(ar);
+		} catch (Exception e) {
+			System.out.println("Error al modificar al arrendador en el implements");
+		}
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Arrendador> findByNameArrend(Arrendador ar) {
+		List<Arrendador> lista = new ArrayList<Arrendador>();
+		try {
+			Query q = em.createQuery("from Arrendador ar where ar.nomArrendador like ?1");
+			q.setParameter(1, "%" + ar.getNomArrendador() + "%");
+			lista = (List<Arrendador>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al buscar al arrendador en el implements");
+		}
+		return lista;
+	}
+
 }
