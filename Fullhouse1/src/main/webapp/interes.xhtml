@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+
+	<ui:define name="content">
+
+		<h2>Registro de intereses</h2>
+		<h:form>
+			<h:outputLabel value="Id:" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{interesController.i.idInteres}" required="true"></p:inputText>
+
+			<h:outputLabel value="Interes Estudiante" for="cboStudent"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboStudent"
+				value="#{interesController.i.student}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{interesController.listaEstudiantes}" var="s"
+					itemLabel="#{s.nombreStudent}" itemValue="#{s}" />
+			</p:selectOneMenu>
+			
+			<h:outputLabel value="Interes Aviso" for="cboAviso"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboAviso"
+				value="#{interesController.i.aviso}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{interesController.listaAviso}" var="a"
+					itemLabel="#{a.idAviso}" itemValue="#{a}" />
+			</p:selectOneMenu>
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{interesController.insert()}"
+				action="listInteres?faces-redirect=true" update="@form" />
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

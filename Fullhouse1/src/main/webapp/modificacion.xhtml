@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Modificacion de estudiantes</h2>
+		<h:form>
+
+			<h:outputLabel value="Id estudiante" for="id"
+				styleClass="control-label" />
+			<p:inputText id="id" value="#{studentController.s.idStudent}"
+				styleClass="form-control" required="true"></p:inputText>
+
+			<h:outputLabel value="Nombre" for="nombre" styleClass="control-label" />
+			<p:inputText id="nombre" value="#{studentController.s.nombreStudent}"
+				styleClass="form-control" required="true"></p:inputText>
+
+			<h:outputLabel value="DNI" for="dni" styleClass="control-label" />
+			<p:inputText id="dni" value="#{studentController.s.dniStudent}"
+				styleClass="form-control" required="true"></p:inputText>
+
+			<h:outputLabel value="Edad" for="edad" styleClass="control-label" />
+			<p:inputText id="edad" value="#{studentController.s.edadStudent}"
+				styleClass="form-control" required="true"></p:inputText>
+
+			<h:outputLabel value="Numero" for="numero" styleClass="control-label" />
+			<p:inputText id="numero" value="#{studentController.s.numStudent}"
+				styleClass="form-control" required="true"></p:inputText>
+
+			<h:outputLabel value="Email" for="email" styleClass="control-label" />
+			<p:inputText id="email" value="#{studentController.s.correoStudent}"
+				styleClass="form-control" required="true"></p:inputText>
+
+			<h:outputLabel value="User" for="user" styleClass="control-label" />
+			<p:inputText id="user" value="#{studentController.s.userStudent}"
+				styleClass="form-control" required="true"></p:inputText>
+
+			<h:outputLabel value="Password" for="password"
+				styleClass="control-label" />
+			<p:inputText id="password" value="#{studentController.s.passStudent}"
+				styleClass="form-control" required="true"></p:inputText>
+
+			<h:outputLabel value="Universidad" for="cboUniversidad"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboUniversidad"
+				value="#{studentController.s.uniStudent}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{studentController.listaUniversidad}" var="s"
+					itemLabel="#{s.fullNameUniversidad}" itemValue="#{s}" />
+			</p:selectOneMenu>
+			
+			<p:commandButton value="Actualizar"
+				actionListener="#{studentController.update()}"
+				action="listStudent?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary"></p:commandButton>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
